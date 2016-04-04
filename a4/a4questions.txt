@@ -1,0 +1,15 @@
+Name: Richard Lee
+Section: 2
+
+Question - demo.c shows us that if a program is stuck in an infinite loop, it cannot go forward. Our program for a simple alarm (intdate.c) also has an infinite while loop. Yet, we see the print statements like below when we execute it -
+
+% intdate
+Date will be printed every 3 seconds.
+Enter ^C to end the program:
+current time is Tue Sep  4 13:15:21 2015
+current time is Tue Sep  4 13:15:24 2015
+current time is Tue Sep  4 13:15:27 2015
+^C
+
+How does the main function of intdate.c come out of the infinite while loop to print these statement?
+This is because we set up an asynchronous interrupt in the form of a signal in intdate.c, which causes the program to call the interrupt handler every 3 seconds (alarm). While in this interrupt handler, we are able to print stuff out even though the main is an infinite loop, meaning that we got out from the main loop, and proceed to the interrupt handler part of the code to print stuff out.

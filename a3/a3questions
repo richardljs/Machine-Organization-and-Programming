@@ -1,0 +1,108 @@
+Name (and partner's name): Richard Lee
+Section (and partner's section): Section 2
+
+Assignment 3 questions.
+Do not remove the questions from this file.
+Please indent your answers.
+
+For ALL cache simulations, use a capacity of 16384 bytes for both 
+the I-cache and the D-cache.
+
+cache1D
+-------
+
+1. What do you get from running pin with a block size of 4 bytes? (Pasting the output here is fine!)
+      Instruction cache misses: 5997
+      Instruction cache references: 1195775
+      Data cache misses:    107395
+      Data cache references:    746593
+  
+  1.1 Calculate the hit ratio for the I-cache with a block size of 4 bytes?
+      99.4985%
+  1.2 Calculate the hit ratio for the D-cache with a block size of 4 bytes?
+      85.6153%
+2. What do you get from running pin with a block size of 32 bytes? (Pasting the output here is fine!)
+      Instruction cache misses: 1181
+      Instruction cache references: 1195775
+      Data cache misses:    15739
+      Data cache references:    746593
+  
+  2.1 Calculate the hit ratio for the I-cache with a block size of 32 bytes?
+      99.9012%
+  2.2 Calculate the hit ratio for the D-cache with a block size of 32 bytes?
+      97.8919%
+3. What do you get from running pin with a block size of 64 bytes? (Pasting the output here is fine!)
+      Instruction cache misses: 697
+      Instruction cache references: 1195775
+      Data cache misses:    9281
+      Data cache references:    746593
+
+  3.1 Calculate the hit ratio for the I-cache with a block size of 64 bytes?
+      99.9417%
+  3.2 Calculate the hit ratio for the D-cache with a block size of 64 bytes?
+      98.7569%
+4. (to be answered without running pin)
+   For this question, assume that the 100,000 elements long integer array that you allocated starts at address 0x50000000 in memory,
+   the size of an integer is 4 bytes  and the D-cache is initially empty. 
+   As you READ the integers in the array one-by-one, starting at index 0, 
+   how many D-cache misses will you see for reading the first 40 integers when the cache block size is:
+   a) 4 bytes:  40
+   b) 32 bytes: 8
+   c) 64 bytes: 3
+
+5. Based on simulations you ran for questions 1, 2 and 3, which block size is best for the I-cache?  Why?
+      64 bytes is the best block size for the I-cache because it has a slightly
+      lower miss ratio compared to the 4 and 32 bytes block sizes. 
+6. Based on simulations you ran for questions 1, 2 and 3, which block size is best for the D-cache?  Why? In what way does the block size affect the hit ratio for this program?
+      The 64 bytes block size is the best block size for the D-cache because it
+      reduces the miss ratio via a larger block size. The bigger the block size, the more the cache will be able to store data, therefore causing less misses to occur, meaning a higher hit ratio.
+  
+
+cache2Drows
+-----------
+
+7. What do you get from running pin with a block size of 64 bytes? (Pasting the output here is fine!)
+      Instruction cache misses: 696
+      Instruction cache references: 18122791
+      Data cache misses:    129398
+      Data cache references:    13567596
+
+  7.1 Calculate the hit ratio for the I-cache with a block size of 64 bytes?
+      99.9962%
+  7.2 Calculate the hit ratio for the D-cache with a block size of 64 bytes?
+      99.0463%
+cache2Dcols
+-----------
+
+8. What do you get from running pin with a block size of 64 bytes? (Pasting the output here is fine!)
+      Instruction cache misses: 696
+      Instruction cache references: 18100291
+      Data cache misses:    1513351
+      Data cache references:    13550096
+
+  8.1 Calculate the hit ratio for the I-cache with a block size of 64 bytes?
+      99.9962%
+  8.2 Calculate the hit ratio for the D-cache with a block size of 64 bytes?
+      88.8314%
+
+Comparison of cache2Drows and cache2Dcols
+-----------------------------------------
+
+9. Compare the performance (hit ratios) of the I-cache for the 2 programs based on simulations of questions 7 and 8.
+   Explain any difference/ lack of difference that you observe. Your answer should be in the form of "There is a difference/no difference BECAUSE ____".
+
+      There is no difference BECAUSE the order in which the data is being manipulated in the I-cache is different but the instructions are somewhat similar.
+
+10. (to be answered without running pin) 
+    For this question, assume that the 2-D integer array you allocated starts at address 0x40000000 in memory,
+    the size of an integer is 4 bytes, D-cache block size is 64 bytes and the D-cache is initially empty.
+    As you READ the integers in the 2-D array one-by-one, starting with element array[0,0],
+    how many D-cache misses will you see for reading the first 10 integers in case of:
+    a) cache2Drows: 1
+    b) cache2Dcols: 10 (Assuming that the array is of size 3000 rows x 500 columns)
+
+11. Compare the performance (hit ratios) of the D-cache for the 2 programs based on simulations of questions 7 and 8.
+    Explain any difference/ lack of difference that you observe. Your answer should be in the form of "There is a difference/no difference BECAUSE ____".
+
+      There is a difference BECAUSE the cache2Drows brings in relevant data and stores it contiguously in memory whereas the cache2Dcols stores relevant data in specified index in different arrays (different memory chunks) therefore making caching data much more inefficient and results in a lower hit-rate for the cache2Dcols.
+
